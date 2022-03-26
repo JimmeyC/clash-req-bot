@@ -1,7 +1,7 @@
 #check packages
 try:
     import discord
-    import PyAutoGUI
+    import pyautogui
     print("Successfully import discord & PyAutoGUI")
 except ModuleNotFoundError:
     import subprocess
