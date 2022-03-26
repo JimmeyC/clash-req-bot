@@ -11,6 +11,17 @@ except FileExistsError:
     test = 0
 
 def log(messagetype, message = ""):
+    #log types
+    # 0 = Message
+    # 1 = Command
+    # 2 = Running
+    # 3 = Success
+    # 4 = Warning
+    # 5 = Error
+    # 6 = Failure 
+    # 7+ = Other
+
+
     if messagetype == 0:
         type = "Message: "
     
@@ -21,12 +32,15 @@ def log(messagetype, message = ""):
         type = "Running: "
     
     elif messagetype == 3:
-        type = "Warning: "
+        type = "Success: "
     
     elif messagetype == 4:
-        type = "Error: "
+        type = "Warning: "
     
     elif messagetype == 5:
+        type = "Error: "
+    
+    elif messagetype == 6:
         type = "Failure: "
     
     else:
