@@ -1,4 +1,5 @@
-
+import pyautogui, time
+from src import log
 
 #log types
     # 0 = Message
@@ -9,3 +10,4 @@
     # 5 = Error
     # 6 = Failure 
     # 7+ = Other
+
