@@ -11,15 +11,17 @@ except FileExistsError:
     test = 0
 
 def log(messagetype, message = ""):
-    #log types
+#log types
     # 0 = Message
     # 1 = Command
     # 2 = Running
     # 3 = Success
     # 4 = Warning
     # 5 = Error
-    # 6 = Failure 
-    # 7+ = Other
+    # 6 = Failure
+    # 7 = Break- When the program ends it will put a line break in to show where it restarted if there was an issue 
+    # 8 = Break- When the program Starts it will put a line break in to show where it restarted if there was an issue 
+    # 9+ = Other
 
 
     if messagetype == 0:
@@ -43,22 +45,33 @@ def log(messagetype, message = ""):
     elif messagetype == 6:
         type = "Failure: "
     
+    elif messagetype == 7:
+        type = "Stopped"
+    
+    elif messagetype == 8:
+        type = "Started"
+    
     else:
         type = 'Other: '
 
     now = datetime.now()
     current_date = now.strftime("%d-%m-%Y")
     current_time = now.strftime("%d/%m/%Y %H:%M:%S.%f")
-    current_time = "["+current_time + "] "
+    current_timee = "["+current_time + "] "
     try:
         lm = open(f"./logs/log-{current_date}.txt", "x")
-        lm.write(f"Start of log-{current_date} | Created at {current_time}\n")
+        lm.write(f"Start of log-{current_date} | Created at {current_timee}\n")
         lm.close()
     except FileExistsError:
         test = 0    
 
     f = open(f"./logs/log-{current_date}.txt", "a")
-    f.write(current_time + type + message + "\n")
+    if messagetype == 7:
+        f.write("--------------------------------[Server Stopped At: "+ current_time +"]-------------------------------------------\n\n")
+    elif messagetype == 8:
+        f.write("--------------------------------[Server Started At: "+ current_time +"]-------------------------------------------\n")
+    else:
+        f.write(current_timee + type + message + "\n")
     f.close()
 
 

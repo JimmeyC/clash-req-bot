@@ -10,8 +10,9 @@ from src import log
     # 4 = Warning
     # 5 = Error
     # 6 = Failure
-    # 7 = Break- When the program starts it will put a line break in to show where it restarted if there was an issue 
-    # 8+ = Other
+    # 7 = Break- When the program ends it will put a line break in to show where it restarted if there was an issue 
+    # 8 = Break- When the program Starts it will put a line break in to show where it restarted if there was an issue 
+    # 9+ = Other
 
 
 print(" █████╗ ██╗   ██╗████████╗ ██████╗      ██████╗ ██████╗  ██████╗    ██████╗  ██████╗ ███╗   ██╗ █████╗ ████████╗███████╗██████╗ ")
@@ -45,6 +46,7 @@ except ModuleNotFoundError:
 
     print("Please run the program again!")
     log.log(4, "Stopping")
+    log.log(7)
     exit()
 
 try:
